@@ -2,6 +2,8 @@
 
 A simple Hugo site for my son Taymullah that serves as a knowledge base of animals and other things he is learning about.
 
+**Live site:** https://cards.amersaw.info
+
 ## Getting Started
 
 ### Prerequisites
