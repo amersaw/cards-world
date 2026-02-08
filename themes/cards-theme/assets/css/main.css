@@ -386,6 +386,33 @@ img {
   background-color: var(--color-primary-dark);
 }
 
+/* Text-only hero (no background image) */
+.single-card-hero-text {
+  background-image: none !important;
+  min-height: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--color-border, rgba(0,0,0,0.06));
+}
+
+.single-card-hero-text .container {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.single-card-hero-text h1 {
+  color: var(--color-text);
+}
+
+.single-card-hero-text .scientific-name,
+.single-card-hero-text .breadcrumb,
+.single-card-hero-text .breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.single-card-hero-text .breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
 .single-card-hero-overlay {
   position: absolute;
   inset: 0;
@@ -593,6 +620,21 @@ img {
   color: var(--color-primary);
 }
 
+.content-image {
+  margin: 0 0 24px 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.content-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  max-height: 70vh;
+}
+
 .card-content {
   font-size: 1rem;
   line-height: 2;
@@ -609,7 +651,8 @@ img {
   border-radius: var(--radius-md);
   padding: 32px;
   color: white;
-  margin-top: 32px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .fun-facts-panel h2 {

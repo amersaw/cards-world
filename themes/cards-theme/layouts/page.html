@@ -1,7 +1,6 @@
 {{ define "main" }}
 <article class="single-card">
-  <div class="single-card-hero" style="background-image: url('{{ with .Params.image | relURL }}{{ . }}{{ end }}');">
-    <div class="single-card-hero-overlay"></div>
+  <header class="single-card-hero single-card-hero-text">
     <div class="container">
       <nav class="breadcrumb">
         <a href="{{ .Site.BaseURL }}">الرئيسية</a>
@@ -15,7 +14,7 @@
       <h1>{{ .Title }}</h1>
       {{ with .Params.scientific_name }}<p class="scientific-name">{{ . }}</p>{{ end }}
     </div>
-  </div>
+  </header>
 
   <div class="container">
     <div class="single-card-body">
@@ -180,6 +179,11 @@
 
       <div class="content-panel">
         <h2>نبذة عن {{ .Title }}</h2>
+        {{ with .Params.image }}
+        <figure class="content-image">
+          <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+        </figure>
+        {{ end }}
         <div class="card-content">
           {{ .Content }}
         </div>

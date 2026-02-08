@@ -12,7 +12,7 @@ habitat: "المحيطات الاستوائية والمعتدلة حول الع
 diet: "أسماك، حبار، قشريات"
 conservation_status: "غير مهدد"
 population: "أعداد مستقرة"
-image: "images/swordfish.jpg"
+image: "images/swordfish.webp"
 wikipedia_ar: "https://ar.wikipedia.org/wiki/أبو_سيف"
 wikipedia_en: "https://en.wikipedia.org/wiki/Swordfish"
 fun_facts:
