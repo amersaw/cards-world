@@ -1,0 +1,201 @@
+{{ define "main" }}
+<article class="single-card">
+  <div class="single-card-hero" style="background-image: url('{{ with .Params.image | relURL }}{{ . }}{{ end }}');">
+    <div class="single-card-hero-overlay"></div>
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="{{ .Site.BaseURL }}">الرئيسية</a>
+        <span class="sep">/</span>
+        {{ with .Parent }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="sep">/</span>
+        {{ end }}
+        <span>{{ .Title }}</span>
+      </nav>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.scientific_name }}<p class="scientific-name">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="single-card-body">
+      <div class="attributes-panel">
+        <h2>معلومات أساسية</h2>
+        <div class="attributes-list">
+          {{ with .Params.scientific_name }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🔬</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الاسم العلمي</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.family }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🧬</span>
+            <div class="attribute-info">
+              <span class="attribute-label">العائلة</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.order }}
+          <div class="attribute-row">
+            <span class="attribute-icon">📋</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الرتبة</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.length }}
+          <div class="attribute-row">
+            <span class="attribute-icon">📏</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الطول</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.mass }}
+          <div class="attribute-row">
+            <span class="attribute-icon">⚖️</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الوزن</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.lifespan }}
+          <div class="attribute-row">
+            <span class="attribute-icon">⏳</span>
+            <div class="attribute-info">
+              <span class="attribute-label">متوسط العمر</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.speed }}
+          <div class="attribute-row">
+            <span class="attribute-icon">💨</span>
+            <div class="attribute-info">
+              <span class="attribute-label">السرعة</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.depth }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🌊</span>
+            <div class="attribute-info">
+              <span class="attribute-label">عمق الغوص</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.habitat }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🗺️</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الموطن</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.diet }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🍽️</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الغذاء</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.conservation_status }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🛡️</span>
+            <div class="attribute-info">
+              <span class="attribute-label">حالة الحفظ</span>
+              <span class="attribute-value conservation-badge">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.population }}
+          <div class="attribute-row">
+            <span class="attribute-icon">📊</span>
+            <div class="attribute-info">
+              <span class="attribute-label">التعداد التقديري</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.era }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🕰️</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الحقبة الزمنية</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.locomotion }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🦶</span>
+            <div class="attribute-info">
+              <span class="attribute-label">طريقة الحركة</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+          {{ with .Params.teeth }}
+          <div class="attribute-row">
+            <span class="attribute-icon">🦷</span>
+            <div class="attribute-info">
+              <span class="attribute-label">الأسنان</span>
+              <span class="attribute-value">{{ . }}</span>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+
+        {{ if or .Params.wikipedia_ar .Params.wikipedia_en }}
+        <div class="wikipedia-links">
+          <h3>ويكيبيديا</h3>
+          <div class="wiki-buttons">
+            {{ with .Params.wikipedia_ar }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="wiki-link wiki-link-ar">
+              <span>ويكيبيديا العربية</span>
+            </a>
+            {{ end }}
+            {{ with .Params.wikipedia_en }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="wiki-link wiki-link-en">
+              <span>Wikipedia (EN)</span>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+
+      <div class="content-panel">
+        <h2>نبذة عن {{ .Title }}</h2>
+        <div class="card-content">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+
+    {{ with .Params.fun_facts }}
+    <div class="fun-facts-panel">
+      <h2>حقائق ممتعة</h2>
+      <ul class="fun-facts-list">
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

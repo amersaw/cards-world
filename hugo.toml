@@ -1,0 +1,12 @@
+baseURL = "https://cards.amersaw.info/"
+languageCode = "ar"
+defaultContentLanguage = "ar"
+title = "عالم البطاقات"
+theme = "cards-theme"
+
+[params]
+  description = "موسوعة البطاقات التعليمية - اكتشف عالم الحيوانات والطبيعة"
+  author = "عالم البطاقات"
+
+[taxonomies]
+  category = "categories"
