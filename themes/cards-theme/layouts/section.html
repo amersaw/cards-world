@@ -7,27 +7,60 @@
   </div>
 </section>
 
-<section class="cards-section">
+{{ if .Sections }}
+<section class="categories-section" style="padding-bottom: 20px;">
   <div class="container">
-    <div class="cards-grid">
-      {{ range .Pages }}
-      <a href="{{ .RelPermalink }}" class="animal-card">
-        <div class="animal-card-image" style="background-image: url('{{ with .Params.image | relURL }}{{ . }}{{ end }}');">
-          <div class="animal-card-image-overlay"></div>
-          <h3 class="animal-card-name">{{ .Title }}</h3>
-        </div>
-        <div class="animal-card-attrs">
-          {{ with .Params.scientific_name }}<div class="attr"><span class="attr-label">الاسم العلمي</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.length }}<div class="attr"><span class="attr-label">الطول</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.mass }}<div class="attr"><span class="attr-label">الوزن</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.era }}<div class="attr"><span class="attr-label">الحقبة</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.habitat }}<div class="attr"><span class="attr-label">الموطن</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.diet }}<div class="attr"><span class="attr-label">الغذاء</span><span class="attr-value">{{ . }}</span></div>{{ end }}
-          {{ with .Params.conservation_status }}<div class="attr"><span class="attr-label">حالة الحفظ</span><span class="attr-value conservation-{{ . }}">{{ . }}</span></div>{{ end }}
+    <h2 class="section-title">التصنيفات</h2>
+    <div class="categories-grid">
+      {{ range .Sections.ByWeight }}
+      <a href="{{ .RelPermalink }}" class="category-card"
+        style="background-image: url('{{ with .Params.image  }}{{ . | absURL }}{{ end }}');">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-content">
+          <span class="category-icon">{{ .Params.icon }}</span>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.description }}</p>
+          <span class="category-count">{{ len .RegularPagesRecursive }} بطاقة</span>
         </div>
       </a>
       {{ end }}
     </div>
   </div>
 </section>
+{{ end }}
+
+{{ if .RegularPages }}
+<section class="cards-section">
+  <div class="container">
+    {{ if .Sections }}<h2 class="section-title">البطاقات</h2>{{ end }}
+    <div class="cards-grid">
+      {{ range .RegularPages }}
+      <a href="{{ .RelPermalink }}" class="animal-card">
+        <div class="animal-card-image"
+          style="background-image: url('{{ with .Params.image | relURL }}{{ . }}{{ end }}');">
+          <div class="animal-card-image-overlay"></div>
+          <h3 class="animal-card-name">{{ .Title }}</h3>
+        </div>
+        <div class="animal-card-attrs">
+          {{ with .Params.scientific_name }}<div class="attr"><span class="attr-label">الاسم العلمي</span><span
+              class="attr-value">{{ . }}</span></div>{{ end }}
+          {{ with .Params.length }}<div class="attr"><span class="attr-label">الطول</span><span class="attr-value">{{ .
+              }}</span></div>{{ end }}
+          {{ with .Params.mass }}<div class="attr"><span class="attr-label">الوزن</span><span class="attr-value">{{ .
+              }}</span></div>{{ end }}
+          {{ with .Params.era }}<div class="attr"><span class="attr-label">الحقبة</span><span class="attr-value">{{ .
+              }}</span></div>{{ end }}
+          {{ with .Params.habitat }}<div class="attr"><span class="attr-label">الموطن</span><span class="attr-value">{{
+              . }}</span></div>{{ end }}
+          {{ with .Params.diet }}<div class="attr"><span class="attr-label">الغذاء</span><span class="attr-value">{{ .
+              }}</span></div>{{ end }}
+          {{ with .Params.conservation_status }}<div class="attr"><span class="attr-label">حالة الحفظ</span><span
+              class="attr-value conservation-{{ . }}">{{ . }}</span></div>{{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
 {{ end }}
